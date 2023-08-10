@@ -8,13 +8,14 @@ const router = express.Router();
 // Registration route
 router.post("/register", async (req, res) => {
   try {
-    const { username, password, name, phoneNumber } = req.body;
+    const { email, password, name, phoneNumber, role } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({
-      username,
+      email,
       password: hashedPassword,
       name,
       phoneNumber,
+      role
     });
     await user.save();
     res.status(201).send("User registered successfully.");
