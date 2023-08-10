@@ -7,15 +7,14 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 const corsOption = {
-  origin: "",
+  origin: "http://localhost:3000/",
   methode: "GET, HEAD, PUT, PATCH, POST, DELETE",
   credential: true,
   optionSuccessStatus: 204,
 };
 
-app.use(cors(corsOption))
+app.use(cors(corsOption));
 app.use(express.json());
-
 
 //mongoDb connection
 mongoose
